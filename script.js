@@ -15,7 +15,8 @@ const escapeHtml = (value = "") =>
     .replaceAll("'", "&#039;");
 
 async function fetchContent(path) {
-  const response = await fetch(path);
+  const cacheBustedPath = `${path}?v=${Date.now()}`;
+  const response = await fetch(cacheBustedPath, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`Could not load ${path}`);
   }

@@ -26,6 +26,20 @@ body {
   line-height: 1.6;
 }
 
+.home-page {
+  background-color: #120b18;
+  background-image: url("./assets/backgrounds/skull-bow.png");
+  background-size: 220px 220px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.home-page .site-header,
+.home-page .layout,
+.home-page .site-footer {
+  background: color-mix(in srgb, #f7f5f2 90%, transparent);
+}
+
 a {
   color: inherit;
 }
