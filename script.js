@@ -32,7 +32,7 @@ function renderAlbums(albums) {
           <img class="album-cover" src="${escapeHtml(album.coverImage)}" alt="${escapeHtml(album.title)} cover" loading="lazy">
           <div class="album-content">
             <h3>${escapeHtml(album.title)}</h3>
-            <p>${escapeHtml(album.description || "")}</p>
+            ${album.description ? `<p>${escapeHtml(album.description)}</p>` : ""}
             <a class="album-link" href="${escapeHtml(album.link)}">Open album</a>
           </div>
         </article>
@@ -124,7 +124,7 @@ function renderWritings(items) {
       (item) => `
         <article class="writing-item">
           <h3><a href="${escapeHtml(item.url)}">${escapeHtml(item.title)}</a></h3>
-          <p>${escapeHtml(item.excerpt || "")}</p>
+          ${item.excerpt ? `<p>${escapeHtml(item.excerpt)}</p>` : ""}
         </article>
       `
     )
