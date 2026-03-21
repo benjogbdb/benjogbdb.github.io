@@ -1,23 +1,5 @@
 [
   {
-    "title": "Morning Walks",
-    "description": "A soft set of street light and shadow studies.",
-    "coverImage": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1400&q=80",
-    "link": "https://github.com/"
-  },
-  {
-    "title": "Rooms and Silence",
-    "description": "Interior studies in natural window light.",
-    "coverImage": "https://images.unsplash.com/photo-1519710884006-9f1d7f06f1ad?auto=format&fit=crop&w=1400&q=80",
-    "link": "https://github.com/"
-  },
-  {
-    "title": "Night Color",
-    "description": "Long exposure notes from late evenings.",
-    "coverImage": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=80",
-    "link": "https://github.com/"
-  },
-  {
     "title": "Alien commute",
     "description": "Strange lights and textures from the ride home.",
     "coverImage": "./assets/photos/pics_from_commute/IMG_4838.heic",
