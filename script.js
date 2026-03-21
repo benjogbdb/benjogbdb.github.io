@@ -43,8 +43,19 @@ function renderAlbums(albums) {
 function renderMusic(items) {
   const mount = document.getElementById("music-list");
   mount.innerHTML = items
-    .map(
-      (item) => `
+    .map((item) => {
+      if (item.audioUrl) {
+        return `
+        <article class="embed-card">
+          <h3>${escapeHtml(item.title)}</h3>
+          <audio class="audio-embed" controls preload="none">
+            <source src="${escapeHtml(item.audioUrl)}" type="audio/wav">
+            Your browser does not support audio playback.
+          </audio>
+        </article>
+      `;
+      }
+      return `
         <article class="embed-card">
           <h3>${escapeHtml(item.title)}</h3>
           <iframe
@@ -54,8 +65,8 @@ function renderMusic(items) {
             seamless
           ></iframe>
         </article>
-      `
-    )
+      `;
+    })
     .join("");
 }
 

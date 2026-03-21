@@ -6,5 +6,9 @@
   {
     "title": "Track Two (Bandcamp)",
     "embedUrl": "https://bandcamp.com/EmbeddedPlayer/track=2868727644/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/"
+  },
+  {
+    "title": "3-18 loop-drum",
+    "audioUrl": "./assets/audio/3-18-loop-drum.WAV"
   }
 ]
