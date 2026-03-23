@@ -122,6 +122,36 @@ h1 {
   margin-top: 1.8rem;
 }
 
+.music-intro {
+  margin-bottom: 2rem;
+}
+
+.music-intro-text {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+.music-intro-link {
+  display: inline-block;
+  font-size: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.music-intro-link:hover {
+  text-decoration: underline;
+}
+
+.music-embed-block {
+  margin-bottom: 2rem;
+}
+
+.music-embed-block .bandcamp-embed {
+  max-width: 350px;
+  border-radius: 8px;
+}
+
 .section-head {
   margin-bottom: 1rem;
 }
