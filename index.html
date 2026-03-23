@@ -34,6 +34,14 @@
     <main id="top" class="layout">
       <section class="hero">
         <h1>benjo</h1>
+
+        <button id="music-play-button" class="music-play-button" aria-label="Play music">
+          <img
+            src="./assets/backgrounds/alien button.jpeg"
+            alt="Play music"
+            loading="eager"
+          />
+        </button>
       </section>
 
       <section class="section">
@@ -44,7 +52,7 @@
           <a class="feature-card" href="./gallery.html">
             <h3>photography</h3>
           </a>
-          <a class="feature-card" href="./music.html">
+          <a class="feature-card" id="music-hover-link" href="./music.html">
             <h3>music</h3>
           </a>
           <a class="feature-card" href="./videos.html">
@@ -60,5 +68,36 @@
       </section>
     </main>
 
+    <audio
+      id="music-hover-audio"
+      preload="auto"
+      style="position: absolute; width: 1px; height: 1px; left: -9999px; top: -9999px; opacity: 0;"
+      src="./assets/audio/people are dying and no one cares loopable.mp3"
+    ></audio>
+
+    <script>
+      (() => {
+        const audio = document.getElementById("music-hover-audio");
+        const button = document.getElementById("music-play-button");
+        if (!audio || !button) return;
+
+        const play = async () => {
+          try {
+            audio.currentTime = 0;
+            audio.muted = false;
+            const p = audio.play();
+            if (p && typeof p.catch === "function") p.catch(() => {});
+          } catch {
+            // Ignore (autoplay policy edge cases).
+          }
+        };
+
+        button.addEventListener("click", () => {
+          // Only react to explicit clicks on the play button.
+          if (audio.paused) play();
+          else audio.pause();
+        });
+      })();
+    </script>
   </body>
 </html>
