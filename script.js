@@ -25,20 +25,40 @@ async function fetchContent(path) {
 
 function renderAlbums(albums) {
   const mount = document.getElementById("album-list");
+  if (!mount) return;
+
+  const hasEmbed = albums.some((a) => a.embedUrl);
   mount.innerHTML = albums
-    .map(
-      (album) => `
+    .map((album) => {
+      if (album.embedUrl && album.embedImage) {
+        return `
+          <article class="album-card album-embed">
+            <a data-flickr-embed="true" href="${escapeHtml(album.embedUrl)}" title="${escapeHtml(album.title)}">
+              <img src="${escapeHtml(album.embedImage)}" width="1600" height="1200" alt="${escapeHtml(album.title)}" loading="lazy"/>
+            </a>
+          </article>
+        `;
+      }
+      return `
         <article class="album-card">
           <img class="album-cover" src="${escapeHtml(album.coverImage)}" alt="${escapeHtml(album.title)} cover" loading="lazy">
           <div class="album-content">
             <h3>${escapeHtml(album.title)}</h3>
             ${album.description ? `<p>${escapeHtml(album.description)}</p>` : ""}
-            <a class="album-link" href="${escapeHtml(album.link)}">Open album</a>
+            <a class="album-link" href="${escapeHtml(album.link)}"${album.link.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : ""}>Open album</a>
           </div>
         </article>
-      `
-    )
+      `;
+    })
     .join("");
+
+  if (hasEmbed) {
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://embedr.flickr.com/assets/client-code.js";
+    script.charset = "utf-8";
+    document.body.appendChild(script);
+  }
 }
 
 function renderMusic(items) {
