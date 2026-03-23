@@ -40,6 +40,35 @@ body {
   background: color-mix(in srgb, #f7f5f2 90%, transparent);
 }
 
+.photography-page {
+  background-color: #120b18;
+  background-image: url("./assets/backgrounds/swamp water.jpeg");
+  background-size: 220px 220px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.photography-page .site-header,
+.photography-page .layout,
+.photography-page .site-footer {
+  background: color-mix(in srgb, #f7f5f2 90%, transparent);
+}
+
+.music-page {
+  background-color: #120b18;
+  background-image: url("./assets/backgrounds/space puppet gadgets.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.music-page .site-header,
+.music-page .layout,
+.music-page .site-footer {
+  background: color-mix(in srgb, #f7f5f2 90%, transparent);
+}
+
 a {
   color: inherit;
 }
