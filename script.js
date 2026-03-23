@@ -90,7 +90,6 @@ function renderVideos(items) {
             <div class="video-content">
               <h3>${escapeHtml(item.title)}</h3>
               <p>Invalid YouTube URL.</p>
-              <p><a class="video-link" href="${escapeHtml(item.url)}">Open video link</a></p>
             </div>
           </article>
         `;
@@ -107,7 +106,6 @@ function renderVideos(items) {
           ></iframe>
           <div class="video-content">
             <h3>${escapeHtml(item.title)}</h3>
-            <p><a class="video-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></p>
           </div>
         </article>
       `;
