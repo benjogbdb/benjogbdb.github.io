@@ -37,13 +37,14 @@ body {
 .home-page .hero {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1.25rem;
 }
 
 .music-play-button {
   position: relative;
-  width: 150px;
-  height: 150px; /* ~2/3 of 220px tiled background */
+  width: 300px;
+  height: 300px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -55,6 +56,15 @@ body {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.hero-press-graphic {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  object-fit: contain;
+  display: block;
+  transform: translateY(-0.85rem);
 }
 
 .home-page .site-header,
