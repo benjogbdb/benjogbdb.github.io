@@ -99,33 +99,47 @@ function toYouTubeEmbed(url) {
   return `https://www.youtube.com/embed/${direct[1]}`;
 }
 
+function toYouTubeWatchUrl(url) {
+  const direct = url.match(
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/
+  );
+  if (!direct) return "";
+  return `https://www.youtube.com/watch?v=${direct[1]}`;
+}
+
 function renderVideos(items) {
   const mount = document.getElementById("video-list");
   const cards = items
     .map((item) => {
       const embedUrl = toYouTubeEmbed(item.url);
+      const watchUrl = toYouTubeWatchUrl(item.url);
+      const label = escapeHtml(item.title || "Video");
       if (!embedUrl) {
         return `
           <article class="video-card">
             <div class="video-content">
-              <h3>${escapeHtml(item.title)}</h3>
+              <h3>${label}</h3>
               <p>Invalid YouTube URL.</p>
             </div>
           </article>
         `;
       }
+      const linkHtml = watchUrl
+        ? `<p><a class="video-link" href="${escapeHtml(watchUrl)}" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></p>`
+        : "";
       return `
         <article class="video-card">
           <iframe
             class="video-frame"
             src="${escapeHtml(embedUrl)}"
-            title="${escapeHtml(item.title)}"
+            title="${label}"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
           ></iframe>
           <div class="video-content">
-            <h3>${escapeHtml(item.title)}</h3>
+            <h3>${label}</h3>
+            ${linkHtml}
           </div>
         </article>
       `;
@@ -137,15 +151,28 @@ function renderVideos(items) {
 
 function renderWritings(items) {
   const mount = document.getElementById("writing-list");
+  if (!mount) return;
   mount.innerHTML = items
-    .map(
-      (item) => `
+    .map((item) => {
+      const title = escapeHtml(item.title || "");
+      const titleBlock = item.url
+        ? `<h3><a href="${escapeHtml(item.url)}">${title}</a></h3>`
+        : `<h3>${title}</h3>`;
+      const bodyBlock = item.body
+        ? `<div class="writing-body">${escapeHtml(item.body)}</div>`
+        : "";
+      const excerptBlock =
+        item.excerpt && !item.body
+          ? `<p>${escapeHtml(item.excerpt)}</p>`
+          : "";
+      return `
         <article class="writing-item">
-          <h3><a href="${escapeHtml(item.url)}">${escapeHtml(item.title)}</a></h3>
-          ${item.excerpt ? `<p>${escapeHtml(item.excerpt)}</p>` : ""}
+          ${titleBlock}
+          ${excerptBlock}
+          ${bodyBlock}
         </article>
-      `
-    )
+      `;
+    })
     .join("");
 }
 
